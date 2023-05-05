@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>KontrolaFRTIDS</title>
+</head>
+<body>
+
+
+<!-- RED,GREEN,ORANGE (change soon TODO) -->
+
+{% for sistem in sistems %}
+
+{% if sistem.status == 1 %}
+<body style="background-color: rgb(236, 255, 179);">
+<h2 class="content">MONITORING FRT IDS SISTEMA</h2>
+<h2 class="content">Vrijeme: {% now "d-m-Y G:i:s" %}</h2>
+<h1 class="content" style="color:green;">SISTEM JE AKTIVAN</h1>
+<form action="/reqReboot" class="content">
+  <button id="stat-btn" class="button">REBOOT</button>
+</form>
+
+{% elif sistem.status == 3 %}
+<body style="background-color: rgb(255, 204, 153);">
+<h2 class="content">MONITORING FRT IDS SISTEMA</h2>
+<h2 class="content">Vrijeme: {% now "d-m-Y G:i:s" %}</h2>
+<h1 class="content">SISTEM SE RESTARTUJE, SACEKAJTE</h1>
+
+{% else %}
+<body style="background-color: rgb(255, 153, 153);">
+<h2 class="content">MONITORING FRT IDS SISTEMA</h2>
+<h2 class="content">Vrijeme: {% now "d-m-Y G:i:s" %}</h2>
+<h1 class=content style="color:red;"> SISTEM TRENUTNO NIJE U FUNKCIJI</h1>
+<form action="/reqReboot" class="content">
+  <button id="stat-btn" class="button"><i class="fa fa-power-off" aria-hidden="true"> REBOOT</i>
+  </button>
+</form>
+{% endif %}
+{% endfor %}
+
+
+
+
+<!-- auto refresh -->
+<script>
+window.setTimeout(function () {
+  location.href = "http://192.168.8.154:8000";
+}, 5000);
+</script>
+
+
+
+ {% comment %} <table class = "content" border="1">
+  <thead>
+    <tr>
+      <th scope="row">#</th>
+      <td>KONTROLA KAMERE</td>
+      <td>AKTIVNOST</td>
+      <td>STATUS</td>
+    </tr>
+  </thead>
+  <tbody>
+    {% for sistem in sistems %}
+      <tr>
+        <th scope="row">{{sistem.ids}}</th>
+        <td>{{sistem.ids}}</td>
+        <td>{{sistem.aktivnost}}</td>
+        <td>{{sistem.status}}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table> {% endcomment %}
+<div class="footer">
+  <p class="footer">&copy; 2023 Nikola Zivkovic. UCG Master.</p>
+</div>
+</body>
+</html>
