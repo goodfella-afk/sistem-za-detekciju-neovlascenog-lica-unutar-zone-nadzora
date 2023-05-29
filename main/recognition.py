@@ -79,7 +79,7 @@ class FaceRecognition:
                         name = self.known_face_names[best_match_index]
                         confidence = face_confidence(face_distances[best_match_index])
                     if intruder == 1:
-                        img_name = "/home/bigfella/Desktop/v4/intruder/image.jpg"
+                        img_name = "/opt/frtsys/intruder/image.jpg"
                         cv2.imwrite(img_name, frame)
                         exit()
                         

@@ -1,4 +1,3 @@
-import numpy as np
 import cv2
 import time
 import recognition
@@ -10,7 +9,7 @@ capture_duration = 3
 cap = cv2.VideoCapture(0)
 
 fourcc = cv2.VideoWriter_fourcc(*'XVID')
-out = cv2.VideoWriter('/home/bigfella/Desktop/v4/outputvideo/output.avi',fourcc, 20.0, (640,480))
+out = cv2.VideoWriter('/opt/frtsys/outputvideo/output.avi',fourcc, 20.0, (640,480))
 
 start_time = time.time()
 while( int(time.time() - start_time) < capture_duration ):

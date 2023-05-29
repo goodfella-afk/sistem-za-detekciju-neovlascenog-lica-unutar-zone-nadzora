@@ -15,7 +15,7 @@ mydb = mysql.connector.connect(
 def isitempty(path):
     return os.stat(path).st_size == 0
 
-if isitempty("/home/bigfella/Desktop/v4/monitoring/recognition") == 0 and isitempty("/home/bigfella/Desktop/v4/monitoring/logalert") == 0 :
+if isitempty("/opt/frtsys/monitoring/recognitionlog") == 0 and isitempty("/opt/frtsys/monitoring/orchlog") == 0 :
     mycursor = mydb.cursor()
     mycursor.execute("UPDATE sistem SET status = 1 WHERE aktivnost = 'kameramon'")
     mydb.commit()

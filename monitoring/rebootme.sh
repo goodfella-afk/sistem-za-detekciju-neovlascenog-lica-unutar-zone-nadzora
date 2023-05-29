@@ -1,3 +1,3 @@
 #!/bin/sh
 
-reboot
+echo 'REBOOT SIMULATION'

@@ -16,7 +16,7 @@ myresult = mycursor.fetchall()
 
 if ((3,) in myresult):
     print('rebooting system...')
-    subprocess.call('/home/bigfella/Desktop/v4/monitoring/./rebootme.sh')
+    subprocess.call('/opt/frtsys/monitoring/./rebootme.sh')
 
 
 else:

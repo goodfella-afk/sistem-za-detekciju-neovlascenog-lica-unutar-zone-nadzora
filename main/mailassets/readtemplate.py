@@ -8,6 +8,6 @@ def read_template(filename):
     file specified by filename.
     """
 
-    with open('/home/bigfella/Desktop/v4/mailassets/message.txt', 'r', encoding='utf-8') as template_file:
+    with open('/opt/frtsys/main/mailassets/message.txt', 'r', encoding='utf-8') as template_file:
         template_file_content = template_file.read()
     return Template(template_file_content)

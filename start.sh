@@ -1,2 +1,4 @@
-python3 recognition.py &
-python3 orchestration.py
+#!/bin/sh
+
+python3 /opt/frtsys/main/recognition.py &
+python3 /opt/frtsys/main/orchestration.py
