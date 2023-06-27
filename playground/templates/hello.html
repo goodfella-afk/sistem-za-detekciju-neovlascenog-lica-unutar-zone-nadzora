@@ -24,12 +24,30 @@
 <form action="/reqReboot" class="content">
   <button id="stat-btn" class="button">REBOOT</button>
 </form>
+<form action="/reqStart" class="content">
+  <button id="stat-btn" class="button">START</button>
+</form>
+<form action="/reqStop" class="content">
+  <button id="stat-btn" class="button">STOP</button>
+</form>
 
 {% elif sistem.status == 3 %}
 <body style="background-color: rgb(255, 204, 153);">
 <h2 class="content">MONITORING FRT IDS SISTEMA</h2>
 <h2 class="content">Vrijeme: {% now "d-m-Y G:i:s" %}</h2>
 <h1 class="content">SISTEM SE RESTARTUJE, SACEKAJTE</h1>
+
+{% elif sistem.status == 4 %}
+<body style="background-color: rgb(255, 204, 153);">
+  <h2 class="content">MONITORING FRT IDS SISTEMA</h2>
+  <h2 class="content">Vrijeme: {% now "d-m-Y G:i:s" %}</h2>
+  <h1 class=content style="color:red;"> SISTEM SE TRENUTNO POKREĆE</h1>
+  <form action="/reqReboot" class="content">
+    <button id="stat-btn" class="button"><i class="fa fa-power-off" aria-hidden="true"> REBOOT</i>
+    </button>
+  <form action="/reqStop" class="content">
+    <button id="stat-btn" class="button">STOP</button>
+  </form>
 
 {% else %}
 <body style="background-color: rgb(255, 153, 153);">
@@ -40,6 +58,12 @@
   <button id="stat-btn" class="button"><i class="fa fa-power-off" aria-hidden="true"> REBOOT</i>
   </button>
 </form>
+<form action="/reqStart" class="content">
+  <button id="stat-btn" class="button">START</button>
+</form>
+<form action="/reqStop" class="content">
+  <button id="stat-btn" class="button">STOP</button>
+</form>
 {% endif %}
 {% endfor %}
 
@@ -47,11 +71,11 @@
 
 
 <!-- auto refresh -->
-<script>
+{% comment %} <script>
 window.setTimeout(function () {
-  location.href = "http://192.168.8.154:8000";
+  location.href = "http://192.168.1.234:8000";
 }, 5000);
-</script>
+</script> {% endcomment %}
 
 
 

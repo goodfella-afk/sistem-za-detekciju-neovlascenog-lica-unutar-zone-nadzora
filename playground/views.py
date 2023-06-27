@@ -15,8 +15,20 @@ def say_hello(request):
     return render(request, 'hello.html', context)
 
 
-def reqReboot(request):
+def reqReboot(request): #Reboot
     newValue=3
+    Sistem.objects.filter(aktivnost="kameramon").update(status=newValue)
+    response = redirect('/')
+    return response
+
+def reqStart(request):  #START 
+    newValue=4
+    Sistem.objects.filter(aktivnost="kameramon").update(status=newValue)
+    response = redirect('/')
+    return response
+
+def reqStop(request):  #STOP
+    newValue=5
     Sistem.objects.filter(aktivnost="kameramon").update(status=newValue)
     response = redirect('/')
     return response
