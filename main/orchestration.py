@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import shutil
 import time
 import os
@@ -25,9 +26,9 @@ while True:
         #Define Pics Label / timestamp of event
         Imgdst = f'/opt/frtsys/usbsimulation/{time.strftime("%d_%m_%Y-%H_%M_%S")}.jpg'
         shutil.move(Imgsrc, Imgdst)
-        time.sleep(5)
-        sendmail(Imgdst)
         time.sleep(1)
+        sendmail(Imgdst)
+        time.sleep(5)
         shutil.move(Vidsrc, f'/opt/frtsys/usbsimulation/{time.strftime("%d_%m_%Y-%H_%M_%S")}.avi' )
         os.system('python3 /opt/frtsys/main/recognition.py')
         # could check if image.jpg spawned again and delete for optimal

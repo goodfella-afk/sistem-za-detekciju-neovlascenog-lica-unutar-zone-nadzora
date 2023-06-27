@@ -1,0 +1,2 @@
+bigfella   15909  0.0  0.0   2888   964 pts/1    S    14:12   0:00 sh -c python3 /opt/frtsys/main/recognition.py
+bigfella   15910  126  1.9 1889952 310928 pts/1  Rl   14:12   0:50 python3 /opt/frtsys/main/recognition.py
