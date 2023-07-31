@@ -51,7 +51,7 @@ BLUE "Installing RunPy..."
 sudo pip install runpy
 
 BLUE "Installing mySqlConnector..."
-sudo pip install mysql.connector
+sudo pip install mysql-connector-python
 
 BLUE "Installing SubPRocess..."
 sudo pip install subprocess

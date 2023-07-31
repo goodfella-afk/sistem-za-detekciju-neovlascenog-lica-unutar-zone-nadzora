@@ -1,4 +1,2 @@
 ${PERSON_NAME}, 
-
 Ako ne poznajete ovu osobu....
-

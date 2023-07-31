@@ -1,12 +1,10 @@
 def get_contacts(filename):
-    
-    """
-    Return two lists names, emails containing names and email addresses
-    read from a file specified by filename.
-    """
-    
+
     names = []
     emails = []
+
+    # append names to names and emails to emails, from each row of mycontacts.txt using .split method
+    # pos0 being name and pos1 being email -- return both lists
     with open('/opt/frtsys/main/mailassets/mycontacts.txt', mode='r', encoding='utf-8') as contacts_file:
         for a_contact in contacts_file:
             names.append(a_contact.split()[0])

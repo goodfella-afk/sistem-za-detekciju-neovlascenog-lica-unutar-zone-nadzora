@@ -4,8 +4,6 @@ import os, sys
 import cv2
 import numpy as np
 import math
-import time
-import runpy
 
 
 # Helper
@@ -33,13 +31,18 @@ class FaceRecognition:
         self.encode_faces()
 
     def encode_faces(self):
-        for image in os.listdir('/opt/frtsys/faces'):
-            face_image = face_recognition.load_image_file(f"/opt/frtsys/faces/{image}")
-            face_encoding = face_recognition.face_encodings(face_image)[0]
+        try:
+            for image in os.listdir('/opt/frtsys/faces'):
+                face_image = face_recognition.load_image_file(f"/opt/frtsys/faces/{image}")
+                face_encoding = face_recognition.face_encodings(face_image)[0]
 
-            self.known_face_encodings.append(face_encoding)
-            self.known_face_names.append(image)
-        print("Facial Recognition Activated !")
+                self.known_face_encodings.append(face_encoding)
+                self.known_face_names.append(image)
+            print("Facial Recognition Activated !")
+        except:
+            print ({image})
+
+
 
     def run_recognition(self):
         video_capture = cv2.VideoCapture(0)
@@ -73,12 +76,12 @@ class FaceRecognition:
 
                     # Calculate the shortest distance to face
                     face_distances = face_recognition.face_distance(self.known_face_encodings, face_encoding)
-
                     best_match_index = np.argmin(face_distances)
                     if matches[best_match_index]:
                         intruder = 0
                         name = self.known_face_names[best_match_index]
                         confidence = face_confidence(face_distances[best_match_index])
+                    # check if intruder was detected
                     if intruder == 1:
                         img_name = "/opt/frtsys/intruder/image.jpg"
                         cv2.imwrite(img_name, frame)
