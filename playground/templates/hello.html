@@ -11,9 +11,6 @@
 </head>
 <body>
 
-
-<!-- RED,GREEN,ORANGE (change soon TODO) -->
-
 {% for sistem in sistems %}
 
 {% if sistem.status == 1 %}
@@ -71,11 +68,11 @@
 
 
 <!-- auto refresh -->
-{% comment %} <script>
+<script>
 window.setTimeout(function () {
   location.href = "http://192.168.1.234:8000";
 }, 5000);
-</script> {% endcomment %}
+</script>
 
 
 
